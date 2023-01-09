@@ -16,9 +16,7 @@ class TheCarsController extends AbstractController
     #[Route('/thisisget', name: 'app_the_cars_index', methods: ['GET'])]
     public function index(CarsRepository $carsRepository): Response
     {
-        return $this->render('the_cars/index.html.twig', [
-            'cars' => $carsRepository->findAll(),
-        ]);
+        return $this->json($carsRepository);
     }
 
     #[Route('/new', name: 'app_the_cars_new', methods: ['GET', 'POST'])]

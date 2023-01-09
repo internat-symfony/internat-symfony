@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 
 class CarsController extends AbstractController
 {
@@ -24,21 +26,34 @@ class CarsController extends AbstractController
     }
 
     #[Route('/cars',methods:['GET'])]
-  /*   public function getCars(ManagerRegistry $doctrine): Response
+    public function getCars(ManagerRegistry $doctrine): Response
     {
         $car=$doctrine->getRepository(Cars::class)->findAll();
         
-        
+        // echo($car);
         // dd($car);
         return $this->json($car);
-    } */
-    public function getCars(CarsRepository $carsRepository): JsonResponse
-    {
-        return $this->json( [
-            'cars' => $carsRepository->findAll(),
-        ]);
     }
+    // public function getCars(CarsRepository $carsRepository): JsonResponse
+    // {
+    //     return $this->json( [
+    //         'cars' => $carsRepository->findAll(),
+    //     ]);
+    // }
 
+    // function console_log($output, $with_script_tags = true) {
+    //     $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . 
+    // ');';
+    //     if ($with_script_tags) {
+    //         $js_code = '<script>' . $js_code . '</script>';
+    //     }
+    //     echo $js_code;
+    // }
+    
+    
+    
+    
+    
     #[Route('/findcar/{id}',methods:['GET'])]
     public function findCar($id): Response
     {
