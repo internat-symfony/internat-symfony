@@ -58,7 +58,6 @@ class TheCarsController extends AbstractController
    #[Route('/createcar', name:"createCar", methods: ['POST'])]
    public function createBook(Request $request, SerializerInterface $serializer, EntityManagerInterface $em, UrlGeneratorInterface $urlGenerator): JsonResponse 
    {
-
        $car = $serializer->deserialize($request->getContent(), MyCars::class, 'json');
        $em->persist($car);
        $em->flush();
@@ -76,7 +75,7 @@ class TheCarsController extends AbstractController
 
   #[Route('/carupdate/{id}', name:"updateCar", methods:['PUT'])]
 
-  public function updateBook(Request $request, SerializerInterface $serializer, MyCars $currentCar, EntityManagerInterface $em): JsonResponse 
+  public function updateCar(Request $request, SerializerInterface $serializer, MyCars $currentCar, EntityManagerInterface $em): JsonResponse 
   {
       $updatedCar = $serializer->deserialize($request->getContent(), 
               MyCars::class, 
